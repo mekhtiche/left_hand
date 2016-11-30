@@ -67,10 +67,8 @@ Installation:
 
   if you have permission denied error you need to change the permission of Servo_driver.py and finger.py
 
-      $ cd catkin_ws/src/robot/driver
-
-      $ chmod 775 Servo_driver.py 
-
-      $ cd catkin_ws/src/robot/recording
-
-      $ chmod 775 finger.py 
+      $ sudo nano /lib/udev/rules.d/60-i2c-tools.rule
+      
+      change permission to i2c:
+      
+      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0666"
