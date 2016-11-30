@@ -65,7 +65,7 @@ Installation:
       $ roslaunch robot Recording.launch
 
 
-  if you have permission denied error you need to change the permission of Servo_driver.py and finger.py
+  if you have permission denied error you need to change the permission fir I2C device
 
       $ sudo nano /lib/udev/rules.d/60-i2c-tools.rule
       
