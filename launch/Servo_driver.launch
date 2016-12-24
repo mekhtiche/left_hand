@@ -1,0 +1,5 @@
+<launch>
+
+	<node name="Left_hand_driver" pkg="left_hand" type="Servo_driver.py" output="screen"/>
+
+</launch>

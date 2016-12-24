@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>robot</name>
+  <name>left_hand</name>
   <version>0.0.0</version>
   <description>The robot package</description>
 

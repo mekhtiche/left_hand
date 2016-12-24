@@ -2,30 +2,19 @@
 import sys,os.path
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 import rospy
-from robot.msg import servoSet
+from left_hand.msg import servoSet
 from servo.Adafruit_PWM_Servo_Driver import PWM
-print "SERVO_DRIVER successful import"
-hand = ['Right', 'Left']
-DEBUG = 1
-Lpwm = PWM(0x41, 4)
-Rpwm = PWM(0x40, 4)
+print "LEFT SERVO_DRIVER successful import"
+
+Lpwm = PWM(0x41, 1)
+
 Lpwm.setPWMFreq(30)
-Rpwm.setPWMFreq(30)
 
 
 
 
-def doIt(Rcmd, Lcmd):
-    Rpwm.setPWM(1, 0, Rcmd[0])
-    Rpwm.setPWM(2, 0, Rcmd[1])
-    Rpwm.setPWM(3, 0, Rcmd[2])
-    Rpwm.setPWM(4, 0, Rcmd[3])
-    Rpwm.setPWM(5, 0, Rcmd[4])
-    Rpwm.setPWM(6, 0, Rcmd[5])
-    Rpwm.setPWM(7, 0, Rcmd[6])
-    Rpwm.setPWM(8, 0, Rcmd[7])
-    Rpwm.setPWM(9, 0, Rcmd[8])
-
+def doIt(Lcmd):
+    
     Lpwm.setPWM(1, 0, Lcmd[0])
     Lpwm.setPWM(2, 0, Lcmd[1])
     Lpwm.setPWM(3, 0, Lcmd[2])
@@ -39,8 +28,8 @@ def doIt(Rcmd, Lcmd):
 
 
 def callback(data):
-    #print data
-    doIt(data.right_cmd, data.left_cmd)
+    print data
+    #doIt(data.left_cmd)
 
 
 
@@ -48,7 +37,7 @@ def callback(data):
 
 if __name__ == '__main__':
 
-    rospy.init_node('Fingers_driver', anonymous=True)
-    rospy.Subscriber('servo/cmd', servoSet, callback=callback)
-    print 'SERVO_DRIVER publishers & subscribers successful Initial'
+    rospy.init_node('Left_hand_driver', anonymous=True)
+    rospy.Subscriber('servo/Lcmd', servoSet, callback=callback)
+    print 'LEFT SERVO_DRIVER publishers & subscribers successful Initial'
     rospy.spin()
