@@ -53,6 +53,7 @@ motorStat.msg
 motorStatList.msg
 motorSet.msg
 servoSet.msg
+servoCmd.msg
  )
 
 ## Generate services in the 'srv' folder
