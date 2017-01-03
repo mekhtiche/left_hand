@@ -29,11 +29,11 @@ def doIt(Lcmd):
 
 def CALLBACK(data):
     print data
-    #doIt(data.left_cmd)
+    doIt(data.cmd)
 
 def callback(data):
     print data
-    #Rpwm.setPWM(data.motor, 0, data.command)
+    Rpwm.setPWM(data.motor, 0, data.command)
 
 
 
