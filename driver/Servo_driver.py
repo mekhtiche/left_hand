@@ -14,9 +14,8 @@ def callback(data, servo):
     Rpwm.setPWM(servo, 0, data.data)
 
 if __name__ == '__main__':
-
     rospy.init_node('Left_hand_driver', anonymous=True)
     for servo in range(1, 10):
-        rospy.Subscriber('servo/Lcmd' + str(servo), Int16, callback=callback, callback_args=servo)
+        rospy.Subscriber('servo/L' + str(servo), Int16, callback=callback, callback_args=servo)
     print 'LEFT SERVO_DRIVER publishers & subscribers successful Initial'
     rospy.spin()
