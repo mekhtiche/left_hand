@@ -2,7 +2,7 @@
 import sys,os.path
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 import rospy
-from std/msgs.msg import Int16
+from std_msgs.msg import Int16
 from servo.Adafruit_PWM_Servo_Driver import PWM
 print "LEFT SERVO_DRIVER successful import"
 
