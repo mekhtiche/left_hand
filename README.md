@@ -1,24 +1,17 @@
-# robot
-The system is tested on ubuntu Xenial armhf
-Image avalaible on MEGA Cloud https://mega.nz/#!oIFhUZLa decryption Key: !K1EM5aygbKRRNzjF8cbqpAs_myevqVCU3P7QGwaH8RE
+# robot left hand raspberry pi zero system
+install raspbian 
 
 this package need : 
 
-                    ROS Kinetic 
+                    ROS Groovy 
 
                     I2C tools 
-                    
-                    pyserial
-                    
-                    enum
-                    
-                    python-tk
-                    
+                                       
 Installation:
 
   ROS:
   
-    install ROS Kinetic http://wiki.ros.org/kinetic/Installation/Ubuntu
+    install ROS Grovvy http://wiki.ros.org/groovy/Installation/Raspbian
     
   I2C:
 
@@ -27,23 +20,12 @@ Installation:
       $ sudo apt-get install python-smbus
       $ sudo apt-get install i2c-tools
 
-    
-  
-  Python packages:
-  
-      $ sudo apt-get install python-pip
-
-      $ sudo pip install pyserial
-
-      $ sudo pip install enum
-
-      $ sudo apt-get install python-tk
 
   now use git clone to download the package:
 
       $ cd catkin_ws/src
 
-      $ git clone https://github.com/mekhtiche/robot_new.git
+      $ git clone https://github.com/mekhtiche/right_hand.git
 
       $ cd ..
 
@@ -58,17 +40,21 @@ Installation:
     
   To launch the robot:
 
-      $ roslaunch robot Robot_start.launch
+      $ roslaunch right_hand servo_driver.launch
+   
+  To use remote launch with robot_body you should add source command of your work space in the end of file: /opt/ros/groovy/env.sh
+  it should look like this:
+  
+      #!/usr/bin/env sh
+      # generated from catkin/cmake/templates/env.sh.in
 
-  To record sign:
+      if [ $# -eq 0 ] ; then
+        /bin/echo "Usage: env.sh COMMANDS"
+        /bin/echo "Calling env.sh without arguments is not supported anymore. Instead$
+        exit 1
+      else
+        . "/opt/ros/groovy/setup.sh"
+        . "/home/pi/catkin_ws/devel/setup.sh"
+        exec "$@"
+      fi
 
-      $ roslaunch robot Recording.launch
-
-
-  if you have permission denied error you need to change the permission fir I2C device
-
-      $ sudo nano /lib/udev/rules.d/60-i2c-tools.rule
-      
-      change permission to i2c:
-      
-      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0666"
