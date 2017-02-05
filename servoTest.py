@@ -1,7 +1,6 @@
 import rospy
 from Tkinter import *
 from servo.Adafruit_PWM_Servo_Driver import PWM
-from right_hand.msg import servoSet, servoCmd
 Rpwm = PWM(0x41, 1)
 Rpwm.setPWMFreq(30)
     
